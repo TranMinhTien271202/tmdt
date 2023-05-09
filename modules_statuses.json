@@ -1,0 +1,9 @@
+{
+    "Point": true,
+    "Student": true,
+    "Teacher": true,
+    "Admin": true,
+    "Shop": true,
+    "Abc": true,
+    "Manage": true
+}
