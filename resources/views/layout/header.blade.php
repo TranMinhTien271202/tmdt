@@ -33,10 +33,10 @@
                                                     id="dropdownMenuButton" data-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false">Sản phẩm</a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else
-                                                            here</a>
+                                                        @foreach ($cate as $item)
+                                                        <a class="dropdown-item" href="#">{{$item->name}}</a>
+                                                        @endforeach
+
                                                     </div>
                                                 </div>
                                             </li>

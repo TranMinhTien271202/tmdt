@@ -1,167 +1,154 @@
 @extends('shop::layout.app')
+@section('style')
+    @parent
+    <style>
+        .vnd{
+            font-size:8px
+        }
+    </style>
+@endsection
 @section('content')
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>General Form</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">General Form</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="content">
         <div class="container-fluid">
-            <form method="post" name="ProductForm" id="ProductForm">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Thông tin sản phẩm</h3>
-                            </div>
-                            <form>
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                        <input type="name" name="name" id="name" class="form-control"
-                                            id="exampleInputEmail1" placeholder="Enter email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Giá</label>
-                                        <input type="text" name="price" id="price" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Giá">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Giảm giá</label>
-                                        <input type="text" name="sale" id="sale" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Giảm giá">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Số lượng</label>
-                                        <input type="text" name="quantity" id="quantity" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Giảm giá">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Số lượng</label>
-                                        <select class="select2" name="" id="">
-                                            <option value="1">1</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" id="image" name="image[]"
-                                                    class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Chọn File</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" id="btn-save" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
+            <div class="row">
+                <div class="col">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3 class="card-title">Danh sách sản phẩm</h3>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card card-danger">
-                            <div class="card-header">
-                                <h3 class="card-title">Different Width</h3>
-                            </div>
-                            <div class="card-body" id="item">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <input type="text" name="name1[]" id="name1" class="form-control"
-                                            placeholder="name">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" name="value1[]" id="value1" class="form-control"
-                                            placeholder="value">
-                                    </div>
-                                    <div class="col">
-                                        <button class="btn btn-success add" id="add"><i
-                                                class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card card-success">
-                            <div class="card-header">
-                                <h3 class="card-title">Different Height</h3>
-                            </div>
-                            <div class="card-body">
-                                <input type="text" name="info" id="info" name="" id="">
-                            </div>
-                            <div class="card-body">
-                                {{-- <textarea name="" name="desc" id="desc" id="" cols="30" rows="10"></textarea> --}}
-                                <input type="text" name="desc" id="desc" name="" id="">
-                            </div>
+                        <div class="card-body">
+                            <table class="table" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th>Name</th>
+                                        <th>price <span class="vnd">Đơn vị: Nghìn Đồng</span></th>
+                                        <th>sale <span class="vnd">Đơn vị: Nghìn Đồng</span></th>
+                                        <th>brand</th>
+                                        <th>category</th>
+                                        <th>quantity</th>
+                                        <th>view</th>
+                                        <th>code</th>
+                                        <th>action</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </section>
 @endsection
 @section('script')
     @parent
-    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('info');
-        CKEDITOR.replace('desc');
-    </script>
+    <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/plug-ins/1.10.25/dataRender/number_format.js"></script>
+
     <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        $(document).ready(function() {
-            $(".add").click(function(e) {
-                e.preventDefault();
-                $("#item").prepend(`<div class="row" style="padding-bottom: 8px;">
-                                <div class="col-3">
-                                    <input type="text" name="name1[]" id="name1" class="form-control" placeholder="name">
-                                </div>
-                                <div class="col">
-                                    <input type="text" name="value1[]" id="value1" class="form-control" placeholder="value">
-                                </div>
-                                <div class="col">
-                                    <button class="btn btn-danger remove" id="remove"><i class="fa-solid fa-trash"></i></button>
-                                </div>
-                            </div>`);
+        $(function() {
+            var table = $('#data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{ route('product.index') }}",
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                    },
+                    {
+                        data: 'name',
+                    },
+                    {
+                        data: 'price',
+                        render: $.fn.dataTable.render.number('.', '.')
+                    },
+                    {
+                        data: 'sale',
+                    },
+                    {
+                        data: 'brand_id',
+                    },
+                    {
+                        data: 'category_id',
+                    },
+                    {
+                        data: 'code_product',
+                    },
+                    {
+                        data: 'view',
+                    },
+                    {
+                        data: 'quantity',
+                    },
+                    {
+                        data: 'action',
+                        orderable: false,
+                        searchable: false
+                    },
+                ],
+                rowGroup: {
+                    dataSrc: 'parent_id',
+                    startRender: function(rows, group) {
+                        var groupRow = $('<tr/>')
+                            .addClass('parent')
+                            .append($('<td colspan="5"/>').text(group));
+
+                        return groupRow;
+                    }
+                }
+            });
+            $('body').on('click', '.deleteProduct', function() {
+                var _id = $(this).data("id");
+                Swal.fire({
+                    title: 'Bạn có muốn xóa?',
+                    text: "Bạn sẽ không thể hoàn tác!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Xóa'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "DELETE",
+                            url: "{{ route('product.index') }}" + '/' + _id,
+                            success: function(data) {
+                                if (data.status == 1) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.success,
+                                        'success'
+                                    )
+                                    table.draw();
+                                } else {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.error,
+                                        'error'
+                                    )
+                                }
+                                table.draw();
+                            },
+                            error: function(data) {
+                                console.log('Error:', data);
+                            }
+                        });
+                    }
+                })
             });
         });
-        $(document).on('click', '.remove', function(e) {
-            e.preventDefault();
-            let item = $(this).parent().parent();
-            $(item).remove();
-        })
-        $("#ProductForm").submit(function(e) {
-            e.preventDefault();
-            var data = $(this).serialize();
-            var info = CKEDITOR.instances.info.getData();
-            var desc = CKEDITOR.instances.desc.getData();
-            data += '&info=' + info + '';
-            data += '&desc=' + desc + '';
-            console.log(info);
-            $.ajax({
-                url: "{{ route('product.store') }}",
-                method: 'POST',
-                data: data,
-                success: function(data) {
-                    console.log(data);
-                }
-            })
-        });
+
+        function printErrorMsg(msg) {
+            $.each(msg, function(key, value) {
+                console.log(key);
+                $('.' + key + '_err').text(value);
+            });
+        }
     </script>
 @endsection

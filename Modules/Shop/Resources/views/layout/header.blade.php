@@ -197,10 +197,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/shop/product" class="nav-link">
-                        <i class="fa-brands fa-product-hunt"></i>
+                    <a href="{{ route('product.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Sản phẩm
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('product.index') }}" class="nav-link">
+                                <i class="fa-solid fa-list"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('product.create') }}" class="nav-link">
+                                <i class="fa-solid fa-plus"></i>
+                                <p>Tạo mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('voucher.index')}}" class="nav-link">
+                        <i class="fa-brands fa-salesforce"></i>
+                        <p>
+                            Mã giảm giá
                         </p>
                     </a>
                 </li>

@@ -6,8 +6,8 @@ use App\Models\Category;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use DataTables;
 use Illuminate\Support\Facades\Validator;
+use Yajra\DataTables\DataTables;
 
 class CategoryController extends Controller
 {

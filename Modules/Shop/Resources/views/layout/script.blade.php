@@ -26,8 +26,9 @@
 <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
-{{-- <script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script> --}}
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 {{-- <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script> --}}
+
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>

@@ -17,6 +17,7 @@ use Modules\Shop\Http\Controllers\AuthController;
 use Modules\Shop\Http\Controllers\CategoryController;
 use Modules\Shop\Http\Controllers\ProductController;
 use Modules\Shop\Http\Controllers\ShopController;
+use Modules\Shop\Http\Controllers\VoucherController;
 use Modules\Shop\Http\Middleware\Check;
 
 Route::prefix('shop')->group(function () {
@@ -32,6 +33,7 @@ Route::prefix('shop')->group(function () {
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
         Route::resource('brand', BrandController::class)->only('index', 'destroy');
         Route::resource('category', CategoryController::class)->only('index', 'destroy');
-        Route::resource('product', ProductController::class)->only('index', 'destroy');
+        Route::resource('product', ProductController::class)->only('index','create','destroy');
+        Route::resource('voucher', VoucherController::class)->only('index','create','destroy');
     });
 });

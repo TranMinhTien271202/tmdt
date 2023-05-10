@@ -1,47 +1,5 @@
 @extends('layout.app')
 @section('content')
-    <!-- mobile fix menu start -->
-    <div class="mobile-menu d-md-none d-block mobile-cart">
-        <ul>
-            <li class="active">
-                <a href="index.html">
-                    <i class="iconly-Home icli"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-
-            <li class="mobile-category">
-                <a href="javascript:void(0)">
-                    <i class="iconly-Category icli js-link"></i>
-                    <span>Category</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="search.html" class="search-box">
-                    <i class="iconly-Search icli"></i>
-                    <span>Search</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="wishlist.html" class="notifi-wishlist">
-                    <i class="iconly-Heart icli"></i>
-                    <span>My Wish</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="cart.html">
-                    <i class="iconly-Bag-2 icli fly-cate"></i>
-                    <span>Cart</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <!-- mobile fix menu end -->
-
-    <!-- Home Section Start -->
     <section class="home-section-2 home-section-bg pt-0 overflow-hidden">
         <div class="container-fluid p-0">
             <div class="row">
@@ -72,9 +30,6 @@
             </div>
         </div>
     </section>
-    <!-- Home Section End -->
-
-    <!-- Category Section Start -->
     <section>
         <div class="container-fluid-lg">
             <div class="row">
@@ -89,7 +44,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.05s">
@@ -100,7 +54,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.1s">
@@ -111,7 +64,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.15s">
@@ -122,7 +74,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.2s">
@@ -133,7 +84,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.25s">
@@ -144,7 +94,6 @@
                                 </div>
                             </a>
                         </div>
-
                         <div>
                             <a href="shop-left-sidebar.html" class="category-box category-dark wow fadeInUp"
                                 data-wow-delay="0.3s">
@@ -171,9 +120,6 @@
             </div>
         </div>
     </section>
-    <!-- Category Section End -->
-
-    <!-- Deal Section Start -->
     <section class="product-section product-section-3">
         <div class="container-fluid-lg">
             <div class="title">
@@ -182,61 +128,67 @@
             <div class="row g-sm-4 g-3">
                 <div class="col-xxl-12 ratio_110">
                     <div class="slider-6 img-slider">
+                        @foreach ($product as $item)
                         <div>
                             <div class="product-box-5 wow fadeInUp">
-                                <div class="product-image">
-                                    <a href="product-left-thumbnail.html">
-                                        <img src="../assets/images/fashion/product/1.jpg"
-                                            class="img-fluid blur-up lazyload bg-img" alt="">
-                                    </a>
 
-                                    <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Wishlist">
-                                        <i data-feather="bookmark"></i>
-                                    </a>
+                                    <div class="product-image">
+                                        <a href="product-left-thumbnail.html">
+                                            <img src="../assets/images/fashion/product/1.jpg"
+                                                class="img-fluid blur-up lazyload bg-img" alt="">
+                                        </a>
 
-                                    <ul class="product-option">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                <i data-feather="eye"></i>
-                                            </a>
-                                        </li>
+                                        <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Wishlist">
+                                            <i data-feather="bookmark"></i>
+                                        </a>
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
-                                            <a href="compare.html">
-                                                <i data-feather="refresh-cw"></i>
-                                            </a>
-                                        </li>
+                                        <ul class="product-option">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="{{$item->view}} Lượt Xem">
+                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
+                                                    <i data-feather="eye"></i>
+                                                </a>
+                                            </li>
 
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
-                                            <a href="wishlist.html" class="notifi-wishlist">
-                                                <i data-feather="heart"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                                <a href="compare.html">
+                                                    <i data-feather="refresh-cw"></i>
+                                                </a>
+                                            </li>
 
-                                <div class="product-detail">
-                                    <a href="product-left-thumbnail.html">
-                                        <h5 class="name">brown khadi jacket</h5>
-                                    </a>
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                                <a href="wishlist.html" class="notifi-wishlist">
+                                                    <i data-feather="heart"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product-detail">
+                                        <a href="product-left-thumbnail.html">
+                                            <h5 class="name">{{ $item->name }}</h5>
+                                        </a>
 
-                                    <h5 class="sold text-content">
-                                        <span class="theme-color price">$26.69</span>
-                                        <del>28.56</del>
-                                    </h5>
-                                </div>
+                                        <h5 class="sold text-content">
+                                            @if ($item->sale)
+                                                <span class="theme-color price">{{ number_format($item->sale) }}
+                                                    nghìn</span>
+                                                <del>{{ number_format($item->price) }} Nghìn</del>
+                                            @else
+                                                <span class="theme-color price">{{ number_format($item->price) }}
+                                                    nghìn</span>
+                                            @endif
+
+                                        </h5>
+                                    </div>
+
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Deal Section End -->
-
-
-    <!-- banner section start -->
     <section>
         <div class="container-fluid-lg">
             <div class="row g-md-4 g-3">
@@ -256,7 +208,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-xxl-4 col-xl-12 col-md-5">
                     <a href="shop-left-sidebar.html" class="banner-contain hover-effect h-100">
                         <img src="../assets/images/fashion/banner/2.jpg" class="bg-img blur-up lazyload" alt="">
@@ -270,10 +221,6 @@
             </div>
         </div>
     </section>
-    <!-- banner section end -->
-
-
-    <!-- Top Selling Section Start -->
     <section class="top-selling-section">
         <div class="container-fluid-lg">
             <div class="row">

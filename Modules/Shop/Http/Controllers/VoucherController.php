@@ -2,17 +2,13 @@
 
 namespace Modules\Shop\Http\Controllers;
 
-use App\Models\brand;
-use App\Models\Category;
-use App\Models\info;
-use App\Models\Product;
+use App\Models\voucher;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Str;
-use Yajra\DataTables\Facades\DataTables;
+use Yajra\DataTables\DataTables;
 
-class ProductController extends Controller
+class VoucherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +17,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $menus = Product::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+            $menus = voucher::where('user_id', auth()->user()->id)->get();
             return DataTables::of($menus)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -35,7 +31,7 @@ class ProductController extends Controller
                 })
                 ->make(true);
         }
-        return view('shop::product.index');
+        return view('shop::voucher.index');
     }
 
     /**
@@ -44,9 +40,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $category = Category::all();
-        $brand = brand::all();
-        return view('shop::product.create', ['category' => $category, 'brand' => $brand]);
+        return view('shop::create');
     }
 
     /**
@@ -56,40 +50,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $array = [
-            'name' => $request->name1,
-            'value' => $request->value1
-        ];
-        $result = array_map(function ($a, $b) {
-            return [
-                'name' => $a,
-                'value' => $b
-            ];
-        }, $request->name1, $request->value1);
-
-        $data = Product::Create([
+        $data = voucher::Create([
             'user_id' => auth()->user()->id,
-            'category_id' => $request->category_id,
-            'brand_id' => $request->brand_id,
-            'desc' => $request->desc,
-            'info' => $request->info,
+            'type' => $request->type,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
             'name' => $request->name,
-            'price' => $request->price,
-            'sale' => $request->sale,
-            'quantity' => $request->quantity,
-            // 'image' => $request->image,
-            'code_product' => strtoupper(Str::random(8)),
-            'view' => 0
+            'value' => $request->value,
+            'info' => $request->info
         ]);
-        $product = Product::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->first();
-        foreach ($result as $row) {
-            $info =  info::Create([
-                'name' => $row['name'],
-                'value' => $row['value'],
-                'product_id' => $product->id
-            ]);
-        }
-        return response()->json(['data' => $data, 'info' => $info]);
+        return response()->json($data);
     }
 
     /**
@@ -130,8 +100,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        Product::find($id)->delete();
-        info::where('product_id', $id)->delete();
-        return response()->json(['status' => 1, 'success' => "xóa thành công"]);
+        //
     }
 }

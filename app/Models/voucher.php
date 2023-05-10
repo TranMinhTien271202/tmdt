@@ -13,6 +13,9 @@ class voucher extends Model
         'type',
         'name',
         'value',
-        'user_id'
+        'user_id',
+        'info',
+        'start_date',
+        'end_date',
     ];
 }
