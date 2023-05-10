@@ -3,6 +3,7 @@
 namespace Modules\Shop\Http\Controllers;
 
 use App\Models\Category;
+use App\Repositories\Interface\CategoryRepositoryInterface;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,10 +16,17 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
+    protected $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $menus = Category::with('children')->where('parent_id', null)->get();
+            // $menus = Category::with('children')->where('parent_id', null)->get();
+            $menus = $this->categoryRepository->all('id',1);
             return DataTables::of($menus)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -32,10 +40,7 @@ class CategoryController extends Controller
                 })
                 ->make(true);
         }
-        // $menus = Category::with('children')->where('parent_id', null)->get();
-        // dd($menus);
-        $data = Category::whereNull('parent_id')->get();
-        return view('shop::category.index', ['data' => $data]);
+        return view('shop::category.index');
     }
 
     /**
