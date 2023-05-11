@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\indexController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,7 @@ Route::get('/', function () {
     return view('web.welcome');
 });
 Route::resource('/', indexController::class);
+Route::get('detail/{id}', [ProductController::class, 'detail'])->name('product.detail');
 Route::get('about', function () {
     return view('web.about');
 });
@@ -30,6 +33,4 @@ Route::get('product-detail', function () {
 Route::get('post', function () {
     return view('post.index');
 });
-Route::get('cart', function(){
-    return view('cart.index');
-});
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');

@@ -43,7 +43,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Chào bạn</h1>
                     <p>Hãy đăng ký tài khoản để đồng hành cùng chúng tôi.</p>
-                    <a href=""><button class="ghost" id="signUp">Đăng ký</button></a>
+                    <a href="{{route('shop.register')}}"><button class="ghost" id="signUp">Đăng ký</button></a>
                 </div>
             </div>
         </div>

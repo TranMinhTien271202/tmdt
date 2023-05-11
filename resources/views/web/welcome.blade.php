@@ -131,9 +131,8 @@
                         @foreach ($product as $item)
                         <div>
                             <div class="product-box-5 wow fadeInUp">
-
                                     <div class="product-image">
-                                        <a href="product-left-thumbnail.html">
+                                        <a href="/detail/{{$item->id}}">
                                             <img src="../assets/images/fashion/product/1.jpg"
                                                 class="img-fluid blur-up lazyload bg-img" alt="">
                                         </a>

@@ -65,6 +65,14 @@
                                                     </button>
                                                 </div>
                                             </li>
+                                            <li class="nav-item dropdown">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-link" style="text-decoration: none"
+                                                        type="button" aria-haspopup="true" aria-expanded="false">
+                                                        <a href="{{route('dashboard')}}">Tôi muốn bán hàng</a>
+                                                    </button>
+                                                </div>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -157,7 +165,7 @@
                                             </div>
 
                                             <div class="button-group">
-                                                <a href="cart.html" class="btn btn-sm cart-button">View Cart</a>
+                                                <a href="{{route('cart.index')}}" class="btn btn-sm cart-button">View Cart</a>
                                                 <a href="checkout.html"
                                                     class="btn btn-sm cart-button theme-bg-color
                                                 text-white">Checkout</a>

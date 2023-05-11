@@ -45,7 +45,7 @@
                 <div class="overlay-panel overlay-right">
                     <h1>Nếu bạn đã có tài khoản</h1>
                     <p>Hãy đăng nhập để đồng hành cùng chúng tôi.</p>
-                    <a href=""><button class="ghost" id="signUp">Đăng nhập</button></a>
+                    <a href="{{route('shop.login')}}"><button class="ghost" id="signUp">Đăng nhập</button></a>
                 </div>
             </div>
         </div>

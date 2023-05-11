@@ -26,9 +26,9 @@
                                         <th>sale <span class="vnd">Đơn vị: Nghìn Đồng</span></th>
                                         <th>brand</th>
                                         <th>category</th>
-                                        <th>quantity</th>
-                                        <th>view</th>
                                         <th>code</th>
+                                        <th>view</th>
+                                        <th>quantity</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
